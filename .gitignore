@@ -1,0 +1,14 @@
+# dependencies
+node_modules
+
+# build output
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+
+# local environment
+.env*.local
+
+# the deploy bundle `npm run package` writes — large and regenerable
+*-site.zip

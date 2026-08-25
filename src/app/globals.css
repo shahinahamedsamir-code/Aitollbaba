@@ -1,0 +1,164 @@
+@import 'tailwindcss';
+
+/*
+ * A deliberately single-look design: this is an inspection console, and the
+ * dark ground is what makes the readouts, the scan line and the acid accent
+ * read as instrumentation rather than as a brochure. Every colour is painted
+ * explicitly so nothing borrows a host theme.
+ */
+@theme {
+  --color-bg: #07090c;
+  --color-surface: #0d1116;
+  --color-raised: #141a22;
+  --color-line: #1c242e;
+  --color-line-2: #2c3744;
+
+  --color-fg: #e8eef6;
+  --color-fg-2: #97a5b6;
+  --color-fg-3: #5f6d80;
+
+  /* Acid is the signal colour: it marks anything the tool found or produced. */
+  --color-acid: #c9f24d;
+  --color-acid-dim: #8fae2f;
+  --color-acid-ink: #0a0f04;
+  --color-acid-wash: #1a2109;
+
+  --color-violet: #9b8cff;
+  --color-flag: #ff7f5c;
+  --color-flag-wash: #2a1611;
+  --color-ok: #56d98a;
+
+  --font-display: var(--font-display-face), 'Segoe UI', system-ui, sans-serif;
+  --font-sans: var(--font-body-face), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-acid);
+  color: var(--color-acid-ink);
+}
+
+/* The faint engineering grid the whole page sits on. */
+.gridwash {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* One cold light source behind the hero, so the console reads as lit. */
+.halo::before {
+  content: '';
+  position: absolute;
+  inset: -30% 10% auto 10%;
+  height: 620px;
+  background: radial-gradient(ellipse at 50% 40%, rgba(201, 242, 77, 0.14), transparent 64%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Sweep used while a file is being processed. */
+@keyframes sweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+.scanline::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  height: 12%;
+  background: linear-gradient(to bottom, transparent, rgba(201, 242, 77, 0.5), transparent);
+  animation: sweep 1.4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-track {
+  animation: ticker 42s linear infinite;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.32s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.pulse-dot {
+  animation: blink 2.4s ease-in-out infinite;
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .plus {
+  transform: rotate(45deg);
+}
+
+/* Native controls follow the console palette rather than the browser default. */
+input[type='range'] {
+  accent-color: var(--color-acid);
+}
+input[type='checkbox'] {
+  accent-color: var(--color-acid);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise,
+  .ticker-track,
+  .pulse-dot,
+  .scanline::after {
+    animation: none;
+  }
+}
