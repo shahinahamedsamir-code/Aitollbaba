@@ -40,8 +40,8 @@ export const TOOLS: Tool[] = [
     tagline:
       'Read every block in a file without changing it — camera, lens, timestamps, GPS, XMP, C2PA, PNG text chunks.',
     category: 'privacy',
-    status: 'soon',
-    meta: ['read-only', 'full tag dump', 'map for geotags'],
+    status: 'live',
+    meta: ['read-only', 'full tag dump', 'GPS decoded'],
     icon: 'M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7zM12 9.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 1 0 12 9.2z',
   },
   {

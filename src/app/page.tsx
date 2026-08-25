@@ -44,7 +44,7 @@ const FAQ: [string, string][] = [
   ],
   [
     'Which tools are available right now?',
-    'The AI label remover is live today. The EXIF viewer, image compressor, converter, resizer and QR generator are in build — they are listed so you can see what is coming, and they are not clickable until they actually work.',
+    'All six: the AI label remover, EXIF viewer, image compressor, converter, resizer and QR generator. Every one of them runs entirely in your browser — nothing on this site uploads a file, and any tool added later will hold to the same rule or not be added.',
   ],
   [
     'Will more tools be added?',
@@ -96,7 +96,8 @@ export default function Page() {
           <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-16 text-center sm:px-8 sm:pt-24">
             <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 font-mono text-[11px] text-fg-2">
               <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-acid" aria-hidden />
-              {liveCount} live · {TOOLS.length - liveCount} in build · nothing uploaded
+              {liveCount} live{TOOLS.length > liveCount ? ` · ${TOOLS.length - liveCount} in build` : ''} ·
+              nothing uploaded
             </span>
 
             <h1 className="mx-auto mt-6 max-w-3xl font-display text-[2.6rem] font-semibold leading-[1.03] tracking-[-0.03em] sm:text-[3.4rem] lg:text-[3.9rem]">

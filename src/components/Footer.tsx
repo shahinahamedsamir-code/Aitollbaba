@@ -31,11 +31,13 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
-              <li>
-                <a href="/#tools" className="text-fg-3 transition-colors hover:text-acid">
-                  {TOOLS.length - LIVE_TOOLS.length} more in build →
-                </a>
-              </li>
+              {TOOLS.length > LIVE_TOOLS.length && (
+                <li>
+                  <a href="/#tools" className="text-fg-3 transition-colors hover:text-acid">
+                    {TOOLS.length - LIVE_TOOLS.length} more in build →
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
 

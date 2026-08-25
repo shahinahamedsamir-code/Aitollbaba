@@ -14,7 +14,7 @@ The homepage is the catalogue. Each tool is its own route.
 | `/image-converter` | Image Converter | live |
 | `/image-resizer` | Image Resizer | live |
 | `/qr-generator` | QR Generator | live |
-| — | EXIF Viewer | in build |
+| `/exif-viewer` | EXIF Viewer | live |
 
 ## Adding a tool
 
