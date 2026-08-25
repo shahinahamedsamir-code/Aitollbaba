@@ -146,7 +146,7 @@ export default function Page() {
               </p>
             </div>
 
-            <ul className="mt-10 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-3">
               {TOOLS.map((tool) => (
                 <ToolCard key={tool.slug} tool={tool} />
               ))}
@@ -192,18 +192,22 @@ export default function Page() {
               </a>
             </div>
 
-            <ul className="mt-10 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-3">
               {[...PLATFORMS.slice(0, 3), ...GUIDES.slice(0, 3)].map((doc) => (
                 <li key={doc.slug} className="bg-bg">
-                  <a href={docHref(doc)} className="group block h-full p-7">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-acid">
+                  <a href={docHref(doc)} className="group block h-full p-4 sm:p-6 lg:p-7">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-acid sm:text-[10px] sm:tracking-[0.16em]">
                       {doc.eyebrow}
                     </span>
-                    <h3 className="mt-3 font-display text-[17px] font-semibold leading-snug tracking-tight transition-colors group-hover:text-acid">
+                    {/* These titles are long questions, so both title and
+                        summary are clamped at half a phone's width. */}
+                    <h3 className="mt-2 line-clamp-3 font-display text-[14.5px] font-semibold leading-snug tracking-tight transition-colors group-hover:text-acid sm:mt-3 sm:line-clamp-none sm:text-[17px]">
                       {doc.title}
                     </h3>
-                    <p className="mt-2.5 text-[13.5px] leading-relaxed text-fg-2">{doc.description}</p>
-                    <span className="mt-4 inline-block font-mono text-[11px] text-fg-3 transition-colors group-hover:text-acid">
+                    <p className="mt-1.5 line-clamp-3 text-[12px] leading-relaxed text-fg-2 sm:mt-2.5 sm:line-clamp-none sm:text-[13.5px]">
+                      {doc.description}
+                    </p>
+                    <span className="mt-3 inline-block font-mono text-[10.5px] text-fg-3 transition-colors group-hover:text-acid sm:mt-4 sm:text-[11px]">
                       read →
                     </span>
                   </a>
@@ -275,15 +279,16 @@ function ToolCard({ tool }: { tool: Tool }) {
 
   const inner = (
     <>
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex items-start justify-between gap-2 sm:gap-4">
         <span
-          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${
+          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg sm:h-10 sm:w-10 ${
             live ? 'bg-acid text-acid-ink' : 'bg-raised text-fg-3'
           }`}
         >
           <svg
-            width="20"
-            height="20"
+            width="18"
+            height="18"
+            className="sm:h-5 sm:w-5"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -296,7 +301,7 @@ function ToolCard({ tool }: { tool: Tool }) {
           </svg>
         </span>
         <span
-          className={`rounded-full border px-2 py-0.5 font-mono text-[10px] ${
+          className={`shrink-0 rounded-full border px-1.5 py-0.5 font-mono text-[9px] sm:px-2 sm:text-[10px] ${
             live ? 'border-acid/30 bg-acid-wash text-acid' : 'border-line-2 text-fg-3'
           }`}
         >
@@ -305,15 +310,19 @@ function ToolCard({ tool }: { tool: Tool }) {
       </div>
 
       <h3
-        className={`mt-5 font-display text-[17px] font-semibold tracking-tight ${
+        className={`mt-3.5 font-display text-[14.5px] font-semibold leading-snug tracking-tight sm:mt-5 sm:text-[17px] ${
           live ? 'transition-colors group-hover:text-acid' : 'text-fg-2'
         }`}
       >
         {tool.name}
       </h3>
-      <p className="mt-2 text-[13.5px] leading-relaxed text-fg-2">{tool.tagline}</p>
+      <p className="mt-1.5 line-clamp-3 text-[12px] leading-relaxed text-fg-2 sm:mt-2 sm:line-clamp-none sm:text-[13.5px]">
+        {tool.tagline}
+      </p>
 
-      <ul className="mt-4 flex flex-wrap gap-1.5">
+      {/* Detail chips are the first thing to go when the card is half a phone
+          wide — the tagline already says what the tool does. */}
+      <ul className="mt-4 hidden flex-wrap gap-1.5 sm:flex">
         {tool.meta.map((m) => (
           <li key={m} className="rounded border border-line px-2 py-0.5 font-mono text-[10px] text-fg-3">
             {m}
@@ -321,7 +330,7 @@ function ToolCard({ tool }: { tool: Tool }) {
         ))}
       </ul>
 
-      <span className="mt-5 inline-block font-mono text-[11px] text-fg-3">
+      <span className="mt-3 inline-block font-mono text-[10.5px] text-fg-3 sm:mt-5 sm:text-[11px]">
         {live ? (
           <span className="transition-colors group-hover:text-acid">open →</span>
         ) : (
@@ -334,11 +343,11 @@ function ToolCard({ tool }: { tool: Tool }) {
   return (
     <li className="bg-bg">
       {live ? (
-        <a href={href} className="group flex h-full flex-col p-7">
+        <a href={href} className="group flex h-full flex-col p-4 sm:p-6 lg:p-7">
           {inner}
         </a>
       ) : (
-        <div className="flex h-full flex-col p-7 opacity-70">{inner}</div>
+        <div className="flex h-full flex-col p-4 opacity-70 sm:p-6 lg:p-7">{inner}</div>
       )}
     </li>
   );

@@ -13,6 +13,8 @@ The homepage is the catalogue. Each tool is its own route.
 | `/image-compressor` | Image Compressor | live |
 | `/image-converter` | Image Converter | live |
 | `/image-resizer` | Image Resizer | live |
+| `/social-preview` | Social Crop Preview | live |
+| `/jpg-to-pdf` | JPG to PDF | live |
 | `/qr-generator` | QR Generator | live |
 | `/exif-viewer` | EXIF Viewer | live |
 

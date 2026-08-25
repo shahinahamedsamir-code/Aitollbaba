@@ -17,16 +17,19 @@ function Card({ doc }: { doc: Doc }) {
     <li>
       <a
         href={docHref(doc)}
-        className="flex h-full flex-col bg-surface p-6 transition-colors hover:bg-raised"
+        className="flex h-full flex-col bg-surface p-4 transition-colors hover:bg-raised sm:p-6"
       >
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-acid">
+        <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-acid sm:text-[10px] sm:tracking-[0.16em]">
           {doc.eyebrow}
         </span>
-        <span className="mt-3 font-display text-lg font-semibold leading-snug tracking-tight">
+        {/* Long question-shaped titles, clamped while the card is half a phone wide. */}
+        <span className="mt-2 line-clamp-3 font-display text-[14.5px] font-semibold leading-snug tracking-tight sm:mt-3 sm:line-clamp-none sm:text-lg">
           {doc.title}
         </span>
-        <span className="mt-2.5 text-[13.5px] leading-relaxed text-fg-2">{doc.description}</span>
-        <span className="mt-4 font-mono text-[11px] text-fg-3">read →</span>
+        <span className="mt-1.5 line-clamp-3 text-[12px] leading-relaxed text-fg-2 sm:mt-2.5 sm:line-clamp-none sm:text-[13.5px]">
+          {doc.description}
+        </span>
+        <span className="mt-3 font-mono text-[10.5px] text-fg-3 sm:mt-4 sm:text-[11px]">read →</span>
       </a>
     </li>
   );
@@ -56,7 +59,7 @@ export default function GuidesIndex() {
         <section className="border-b border-line">
           <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
             <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-fg-3">by platform</h2>
-            <ul className="mt-5 grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-3">
               {PLATFORMS.map((doc) => (
                 <Card key={doc.slug} doc={doc} />
               ))}
@@ -65,7 +68,7 @@ export default function GuidesIndex() {
             <h2 className="mt-14 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-3">
               how it works
             </h2>
-            <ul className="mt-5 grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-2">
+            <ul className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line">
               {GUIDES.map((doc) => (
                 <Card key={doc.slug} doc={doc} />
               ))}
