@@ -18,12 +18,14 @@ DirectorySlash Off
 
   # One host. www and the bare domain were both answering 200, which is the
   # whole site duplicated at a second address.
-  RewriteCond %{HTTP_HOST} ^www.(.+)$ [NC]
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
   # One address per page. The export writes qr-generator.html and the site
-  # links to /qr-generator; without this both answered 200.
-  RewriteCond %{THE_REQUEST} s/+([^?s]*?).html[s?] [NC]
+  # links to /qr-generator; without this both answered 200. Matched against
+  # THE_REQUEST so it sees the address the visitor actually asked for, not the
+  # rewritten one the last rule in this block produces.
+  RewriteCond %{THE_REQUEST} \s/+([^?\s]*?)\.html[\s?] [NC]
   RewriteRule ^ /%1 [R=301,L]
 
   # Drop a trailing slash so /instagram/ and /instagram are not two URLs.
