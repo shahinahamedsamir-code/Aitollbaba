@@ -26,7 +26,7 @@ const FAQ: [string, string][] = [
   ],
   [
     'Is anything tracked?',
-    'No. There is nothing between the code and the destination, so no one counts the scans — not us either. Free generators that offer "scan analytics" do it by encoding their own URL and forwarding you, which means every scan goes through them and the code stops working if they do.',
+    'Not the codes. There is nothing between the code and the destination, so no one counts the scans — not us either. Free generators that offer "scan analytics" do it by encoding their own URL and forwarding you, which means every scan goes through them and the code stops working if they do. This site does keep a plain counter of page visits, which has nothing to do with the codes you make here.',
   ],
   [
     'Is my data sent anywhere?',

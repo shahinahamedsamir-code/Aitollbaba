@@ -32,11 +32,11 @@ const FAQ: [string, string][] = [
   ],
   [
     'Are my files uploaded to a server?',
-    'No. There is no upload endpoint on this site. The tools are static files plus JavaScript; your image is read into your browser’s memory, processed on your own CPU and released when the tab closes. Open your network tab and watch, or disconnect entirely and try again — it keeps working.',
+    'No. There is no upload endpoint on this site. The tools are static files plus JavaScript; your image is read into your browser’s memory, processed on your own CPU and released when the tab closes. Open your network tab and watch: you will see the page files and a small visit counter, and never your image. Or disconnect entirely and try again — the tools keep working.',
   ],
   [
     'Do I need an account?',
-    'No. There is no sign-up, no email, no login and no daily limit. Nothing about you is collected, because there is nowhere for it to be collected to.',
+    'No. There is no sign-up, no email, no login and no daily limit. A page counter records that a page was opened — no cookies from us, no account, nothing tied to you. Your files are a separate matter entirely: they are never sent anywhere, so there is nothing about them to collect.',
   ],
   [
     'Is Aitoollbaba free?',

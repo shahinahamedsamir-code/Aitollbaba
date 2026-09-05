@@ -134,7 +134,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <span className="hidden items-center gap-2 font-mono text-[11px] text-fg-3 lg:flex">
             <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-ok" aria-hidden />
-            no server connection
+            your files stay here
           </span>
           <a
             href="/#tools"

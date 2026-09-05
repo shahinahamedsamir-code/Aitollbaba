@@ -66,7 +66,8 @@ export default function Footer() {
           <p className="text-[11.5px] leading-relaxed text-fg-3">
             <span className="text-fg-2">Privacy.</span> This page has no upload endpoint. Every file you add is
             processed by JavaScript on your own device and discarded when the tab closes. No account, no
-            cookies for the tool, no copy kept anywhere.
+            cookies from us, no copy of your file kept anywhere. A page counter records visits to
+            the site, never a file.
           </p>
           <p className="text-[11.5px] leading-relaxed text-fg-3">
             <span className="text-fg-2">Use it honestly.</span> Stripping metadata is a privacy measure. It does
