@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import AiChecker from '@/components/AiChecker';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { docHref } from '@/lib/content';
+import { GUIDES } from '@/lib/guides';
+import { PLATFORMS } from '@/lib/platforms';
 import { OG_IMAGE, SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -52,6 +55,58 @@ const FAQ: [string, string][] = [
     'How is this different from the EXIF viewer?',
     'The EXIF viewer prints every tag in the file and lets you read it yourself. This one asks a single question — what does this file claim about its origin — and weighs the answer, separating a declaration from a hint. Same bytes, different question.',
   ],
+];
+
+const TICKER = [
+  'C2PA manifest',
+  'digitalSourceType',
+  'trainedAlgorithmicMedia',
+  'CreatorTool',
+  'Midjourney',
+  'DALL·E',
+  'Stable Diffusion',
+  'Adobe Firefly',
+  'Imagen',
+  'prompt · seed · CFG',
+  'model hash',
+  'camera make · model',
+  'body serial number',
+  'lens model',
+  'shutter · aperture · ISO',
+  'GPS fix',
+];
+
+/* Who actually arrives at a page like this, written as the real situation
+   rather than a persona. */
+const WHO: [string, string][] = [
+  [
+    'Someone accused of using AI',
+    'Your own photograph got labelled. The camera fields are the evidence it came out of a camera — and if the file also carries a C2PA manifest, that is why, and it names the edit that caused it.',
+  ],
+  [
+    'A buyer checking a listing',
+    'A product shot that declares a generator is a shot of something that may not exist. The declaration is often still there, because sellers rarely think to strip it.',
+  ],
+  [
+    'A journalist or a moderator',
+    'A fast first pass before the slow work. A declaration is a fact you can act on; nothing found means you have learned nothing and still have to verify another way.',
+  ],
+  [
+    'Anyone about to post',
+    'See what your own file admits before a platform reads it and decides for you. If you would rather it said nothing, the cleaner next door removes it.',
+  ],
+];
+
+/* [claim, this tool, pixel detectors, looking at it yourself] */
+const COMPARE: [string, boolean, boolean, boolean][] = [
+  ['Answers from the file, not a guess', true, false, false],
+  ['Names the generator when one signed it', true, false, false],
+  ['Reads the field platforms actually use', true, false, false],
+  ['Unaffected by resizing and re-compression', true, false, true],
+  ['Cannot wrongly accuse a real photograph', true, false, true],
+  ['Works with the network off', true, false, true],
+  ['Tells you when it has learned nothing', true, false, false],
+  ['Sees a generated image that was stripped', false, false, false],
 ];
 
 const READS = [
@@ -190,13 +245,27 @@ export default function Page() {
           </div>
         </section>
 
+        {/* ========================================================== ticker */}
+        <section className="overflow-hidden border-b border-line bg-surface py-3.5" aria-hidden>
+          <div className="ticker-track flex w-max gap-8 whitespace-nowrap">
+            {[...TICKER, ...TICKER].map((item, i) => (
+              <span key={i} className="flex items-center gap-8 font-mono text-[12px] text-fg-3">
+                {item}
+                <span className="text-acid/40">/</span>
+              </span>
+            ))}
+          </div>
+        </section>
+
         {/* ========================================================== honest */}
         <section id="honest" className="scroll-mt-16 border-b border-line bg-surface">
           <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
-            <h2 className="font-mono text-[10px] uppercase tracking-[0.16em] text-flag">read this first</h2>
-            <p className="mt-3 max-w-2xl font-display text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-flag">
+              01 / read this first
+            </span>
+            <h2 className="mt-4 max-w-2xl font-display text-3xl font-semibold leading-[1.1] tracking-[-0.02em] sm:text-[2.7rem]">
               Nothing here is a lie detector.
-            </p>
+            </h2>
 
             <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-3">
               {[
@@ -229,12 +298,12 @@ export default function Page() {
         {/* =========================================================== reads */}
         <section id="reads" className="scroll-mt-16 border-b border-line">
           <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
-            <h2 className="font-mono text-[10px] uppercase tracking-[0.16em] text-fg-3">
-              the four declarations
-            </h2>
-            <p className="mt-3 max-w-2xl font-display text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-acid">
+              02 / the four declarations
+            </span>
+            <h2 className="mt-4 max-w-2xl font-display text-3xl font-semibold leading-[1.1] tracking-[-0.02em] sm:text-[2.7rem]">
               Where a generator signs its name.
-            </p>
+            </h2>
 
             <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
               {READS.map((r) => (
@@ -248,13 +317,152 @@ export default function Page() {
           </div>
         </section>
 
+        {/* ========================================================= reading */}
+        <section id="platforms" className="scroll-mt-16 border-b border-line">
+          <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+            <div className="grid gap-6 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] md:items-end">
+              <div>
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-acid">
+                  03 / by platform
+                </span>
+                <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.1] tracking-[-0.02em] sm:text-[2.7rem]">
+                  What each platform does with it
+                </h2>
+              </div>
+              <p className="text-[15px] leading-relaxed text-fg-2">
+                Finding a declaration is half the story. What a platform then does with it differs:
+                Meta labels automatically from the manifest, Pinterest runs classifiers as well,
+                LinkedIn turns it into a badge you can click. These pages cover each one — and if you
+                want the declaration gone rather than explained, every one of them has the cleaner
+                built in.
+              </p>
+            </div>
+
+            <ul className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-3">
+              {[...PLATFORMS, ...GUIDES].map((doc) => (
+                <li key={doc.slug}>
+                  <a
+                    href={docHref(doc)}
+                    className="group flex h-full flex-col bg-bg p-4 transition-colors hover:bg-raised sm:p-6"
+                  >
+                    <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-acid sm:text-[10px] sm:tracking-[0.16em]">
+                      {doc.eyebrow}
+                    </span>
+                    <span className="mt-2 line-clamp-3 font-display text-[14.5px] font-semibold leading-snug tracking-tight transition-colors group-hover:text-acid sm:mt-3 sm:line-clamp-none sm:text-[17px]">
+                      {doc.title}
+                    </span>
+                    <span className="mt-1.5 line-clamp-3 text-[12px] leading-relaxed text-fg-2 sm:mt-2.5 sm:line-clamp-none sm:text-[13.5px]">
+                      {doc.description}
+                    </span>
+                    <span className="mt-auto pt-3 font-mono text-[10.5px] text-fg-3 sm:pt-4 sm:text-[11px]">
+                      read →
+                    </span>
+                  </a>
+                </li>
+              ))}
+              {/* Seven docs in a two- or three-wide grid leave a gap; this fills
+                  it and gives the index a second way in. */}
+              <li>
+                <a
+                  href="/guides"
+                  className="group flex h-full flex-col justify-center bg-bg p-4 transition-colors hover:bg-raised sm:p-6"
+                >
+                  <span className="font-display text-[14.5px] font-semibold leading-snug tracking-tight transition-colors group-hover:text-acid sm:text-[17px]">
+                    All guides in one place
+                  </span>
+                  <span className="mt-1.5 text-[12px] leading-relaxed text-fg-2 sm:mt-2 sm:text-[13.5px]">
+                    Every platform page and explainer, indexed.
+                  </span>
+                  <span className="mt-3 font-mono text-[10.5px] text-acid sm:mt-4 sm:text-[11px]">
+                    open the index →
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        {/* ============================================================= who */}
+        <section id="who" className="scroll-mt-16 border-b border-line bg-surface">
+          <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 md:py-28">
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-acid">
+              04 / who asks
+            </span>
+            <h2 className="mt-4 max-w-2xl font-display text-3xl font-semibold leading-[1.1] tracking-[-0.02em] sm:text-[2.7rem]">
+              Four reasons to open a file
+            </h2>
+
+            <ul className="mt-12 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
+              {WHO.map(([title, body]) => (
+                <li key={title} className="bg-bg p-6 sm:p-7">
+                  <h3 className="font-display text-[17px] font-semibold tracking-tight">{title}</h3>
+                  <p className="mt-2.5 text-[13.5px] leading-relaxed text-fg-2">{body}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* ========================================================= compare */}
+        <section id="compare" className="scroll-mt-16 border-b border-line">
+          <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 md:py-28">
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-acid">
+              05 / alternatives
+            </span>
+            <h2 className="mt-4 max-w-2xl font-display text-3xl font-semibold leading-[1.1] tracking-[-0.02em] sm:text-[2.7rem]">
+              Against the detectors
+            </h2>
+            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-fg-2">
+              Pixel detectors answer the question people actually want answered, and that is their
+              appeal. The trouble is the last row: neither they nor this can see a generated image
+              whose metadata has been stripped — but they will still hand you a confident number for
+              it. Reading a declaration is narrower and correct. Guessing is wider and sometimes
+              wrong about a real person&rsquo;s photograph.
+            </p>
+
+            <div className="mt-12 -mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0">
+              <table className="w-full min-w-[620px] border-collapse text-[13.5px]">
+                <thead>
+                  <tr>
+                    <th className="w-[46%] border-b border-line py-3 pr-4 text-left font-normal" />
+                    <th className="border-b border-acid/40 bg-acid-wash px-4 py-3 text-left font-display text-[15px] font-semibold text-acid">
+                      This tool
+                    </th>
+                    <th className="border-b border-line px-4 py-3 text-left font-mono text-[12px] font-normal text-fg-2">
+                      pixel detectors
+                    </th>
+                    <th className="border-b border-line px-4 py-3 text-left font-mono text-[12px] font-normal text-fg-2">
+                      looking yourself
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {COMPARE.map(([label, a, b, c]) => (
+                    <tr key={label}>
+                      <td className="border-b border-line py-3 pr-4 text-fg-2">{label}</td>
+                      <Cell on={a} lit />
+                      <Cell on={b} />
+                      <Cell on={c} />
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 font-mono text-[10px] text-fg-3 sm:hidden">
+              swipe the table sideways to see every column →
+            </p>
+          </div>
+        </section>
+
         {/* ============================================================= faq */}
         <section id="faq" className="scroll-mt-16 border-b border-line bg-surface">
           <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8">
-            <h2 className="font-mono text-[10px] uppercase tracking-[0.16em] text-fg-3">questions</h2>
-            <p className="mt-3 font-display text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-acid">
+              06 / questions
+            </span>
+            <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.1] tracking-[-0.02em] sm:text-[2.7rem]">
               Checking an image, answered.
-            </p>
+            </h2>
 
             <div className="mt-9 divide-y divide-line border-y border-line">
               {FAQ.map(([q, a]) => (
@@ -305,5 +513,21 @@ export default function Page() {
 
       <Footer />
     </>
+  );
+}
+
+function Cell({ on, lit }: { on: boolean; lit?: boolean }) {
+  return (
+    <td className={`border-b px-4 py-3 ${lit ? 'border-acid/25 bg-acid-wash/40' : 'border-line'}`}>
+      {on ? (
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" className={lit ? 'text-acid' : 'text-fg-2'} role="img" aria-label="yes">
+          <path d="m5 13 4 4L19 7" />
+        </svg>
+      ) : (
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" className="text-fg-3/45" role="img" aria-label="no">
+          <path d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      )}
+    </td>
   );
 }
