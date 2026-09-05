@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: '%s | Aitoollbaba',
   },
   description:
-    'Aitoollbaba is a set of free image and privacy tools that run entirely in your browser. Nothing is uploaded, nothing is stored, no account. Start with the AI label remover.',
+    'Free image and privacy tools that run in your browser — clean metadata, compress, convert, resize, read EXIF, make QR codes. Nothing is ever uploaded.',
   keywords: [
     'aitoollbaba',
     'ai tool baba',

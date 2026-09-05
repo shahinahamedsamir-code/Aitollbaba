@@ -11,9 +11,9 @@ export const PLATFORMS: Doc[] = [
     slug: 'instagram',
     kind: 'platform',
     title: 'How to remove the “Made with AI” label on Instagram',
-    metaTitle: 'Remove the Made with AI label on Instagram — free tool',
+    metaTitle: 'Remove the “Made with AI” label on Instagram',
     description:
-      'Instagram adds its AI label by reading C2PA and IPTC metadata inside your file, not by looking at the picture. Strip those fields in your browser before you post — free, no upload.',
+      'Instagram reads C2PA and IPTC metadata inside your file, not the picture, when it adds an AI label. Strip those fields in your browser before you post.',
     eyebrow: 'instagram',
     answer:
       'Instagram does not decide this by looking at your picture. It reads metadata fields inside the file — a C2PA content-credentials manifest, an IPTC digitalSourceType value, or an XMP tag naming the software. Remove those fields before you upload and the metadata trigger is gone. Nothing else about the image changes.',
@@ -106,9 +106,9 @@ export const PLATFORMS: Doc[] = [
     slug: 'facebook',
     kind: 'platform',
     title: 'Why does Facebook say my photo is AI when it isn’t?',
-    metaTitle: 'Facebook says my photo is AI but it isn’t — why, and the fix',
+    metaTitle: 'Facebook says my photo is AI — why, and the fix',
     description:
-      'Facebook’s AI label is triggered by metadata written at export, not by the picture. Here is why real photographs get labelled, and how to strip the fields that cause it.',
+      'Facebook’s AI label comes from metadata written at export, not the picture. Why real photographs get labelled, and how to strip the fields that cause it.',
     eyebrow: 'facebook',
     answer:
       'Because Facebook is not judging your photograph — it is reading a metadata field that your editor wrote. If you used generative fill, an AI denoise, or almost any recent Adobe feature, the export stamps the whole file as AI-touched even when the edit was trivial. Remove those fields and the trigger goes with them.',
@@ -190,9 +190,9 @@ export const PLATFORMS: Doc[] = [
     slug: 'threads',
     kind: 'platform',
     title: 'Removing the AI label on Threads',
-    metaTitle: 'Remove the AI label on Threads — free metadata cleaner',
+    metaTitle: 'Remove the AI label on Threads — free',
     description:
-      'Threads uses the same Meta labelling pipeline as Instagram and Facebook: the AI label comes from C2PA and IPTC metadata in the file. Strip it in your browser before posting.',
+      'Threads uses Meta’s labelling pipeline: the AI label comes from C2PA and IPTC metadata in the file. Strip it in your browser before you post.',
     eyebrow: 'threads',
     answer:
       'Threads shares Meta’s labelling pipeline with Instagram and Facebook, so the trigger is identical: C2PA content credentials, IPTC digitalSourceType, or XMP fields naming a generative tool. Clean the file before you post and the metadata trigger is gone.',
@@ -249,9 +249,9 @@ export const PLATFORMS: Doc[] = [
     slug: 'pinterest',
     kind: 'platform',
     title: 'Removing AI metadata before pinning to Pinterest',
-    metaTitle: 'Pinterest AI label — remove AI metadata before you pin',
+    metaTitle: 'Pinterest AI label — clean a pin first',
     description:
-      'Pinterest reads image metadata to flag AI-modified content, and Pins carry your EXIF and GPS unless you strip them. Clean both in your browser, free and without uploading.',
+      'Pinterest reads metadata to flag AI-modified content, and pins carry your EXIF and GPS unless you strip them. Clean both in your browser, free.',
     eyebrow: 'pinterest',
     answer:
       'Pinterest flags generative content using a mix of embedded metadata and its own classifiers. Removing the C2PA manifest, IPTC digitalSourceType and generator tags takes away the metadata half — and, since Pins are public and permanent, it also gets your GPS coordinates and camera serial out of the file.',
@@ -322,9 +322,9 @@ export const PLATFORMS: Doc[] = [
     slug: 'linkedin',
     kind: 'platform',
     title: 'Content Credentials on LinkedIn, and how to remove them',
-    metaTitle: 'LinkedIn content credentials — remove the C2PA icon from images',
+    metaTitle: 'LinkedIn content credentials — remove C2PA',
     description:
-      'LinkedIn shows a Content Credentials icon on images carrying a C2PA manifest. Here is what that icon reveals about your file and how to remove the manifest before posting.',
+      'LinkedIn shows a Content Credentials icon on images carrying a C2PA manifest. What it reveals about your file, and how to remove it before posting.',
     eyebrow: 'linkedin',
     answer:
       'LinkedIn participates in C2PA and shows a small Content Credentials icon on images that carry a signed manifest. Clicking it reveals which tool made the file and whether generative AI was involved. Removing the manifest removes the icon — and with it a disclosure you may not have intended to publish.',

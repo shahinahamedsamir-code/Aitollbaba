@@ -2,14 +2,15 @@ import type { Metadata } from 'next';
 import AiChecker from '@/components/AiChecker';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { SITE } from '@/lib/site';
+import { OG_IMAGE, SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'AI Image Checker — read what a file declares about itself, free',
+  title: 'AI Image Checker — what the file declares',
   description:
-    'Check whether an image declares that it was made with AI: C2PA content credentials, the IPTC digitalSourceType field, generator names and Stable Diffusion prompt data — against the marks a real camera leaves. Reads the file, never guesses from the picture. No upload.',
+    'Does an image declare that AI made it? Reads C2PA credentials, the IPTC AI field, generator names and prompt data — weighed against real camera marks. No upload.',
   alternates: { canonical: '/ai-image-checker' },
   openGraph: {
+    images: OG_IMAGE,
     type: 'website',
     url: '/ai-image-checker',
     title: 'AI Image Checker — read what a file declares about itself',

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Article, { articleJsonLd, faqJsonLd } from '@/components/Article';
 import { GUIDES } from '@/lib/guides';
 import { PLATFORMS } from '@/lib/platforms';
-import { SITE } from '@/lib/site';
+import { OG_IMAGE, SITE } from '@/lib/site';
 
 export const dynamicParams = false;
 
@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     description: doc.description,
     alternates: { canonical: `/guides/${doc.slug}` },
     openGraph: {
+    images: OG_IMAGE,
       type: 'article',
       url: `${SITE}/guides/${doc.slug}`,
       title: doc.metaTitle,

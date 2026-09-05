@@ -2,14 +2,15 @@ import type { Metadata } from 'next';
 import ExifViewer from '@/components/ExifViewer';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { SITE } from '@/lib/site';
+import { OG_IMAGE, SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'EXIF Viewer — read every tag in an image, free',
+  title: 'EXIF Viewer — read every tag, change nothing',
   description:
-    'See exactly what an image is carrying: EXIF, GPS coordinates, camera and lens serial numbers, XMP, IPTC, C2PA and PNG prompt chunks. Read-only — the file is never modified, and nothing is uploaded.',
+    'See what an image carries: EXIF, GPS, camera and lens serial numbers, XMP, IPTC, C2PA, PNG prompt chunks. Read-only — your file is never modified or uploaded.',
   alternates: { canonical: '/exif-viewer' },
   openGraph: {
+    images: OG_IMAGE,
     type: 'website',
     url: '/exif-viewer',
     title: 'EXIF Viewer — read every tag in an image, free',

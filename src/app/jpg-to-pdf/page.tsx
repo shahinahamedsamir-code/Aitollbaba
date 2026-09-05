@@ -3,14 +3,15 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import PdfMaker from '@/components/PdfMaker';
 import { PAGE_SIZES } from '@/lib/pdf';
-import { SITE } from '@/lib/site';
+import { OG_IMAGE, SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'JPG to PDF — combine images into a PDF, free, no upload',
+  title: 'JPG to PDF — no re-encoding, no upload',
   description:
-    'Turn JPG, PNG, HEIC or WebP images into one PDF in your browser. JPEGs are embedded exactly as they are, with no re-encoding and no quality loss. Nothing is uploaded and no timestamp is written into the file.',
+    'Turn JPG, PNG, HEIC or WebP images into one PDF. A JPEG is embedded exactly as it is — no re-encoding, no quality loss. No upload, and no date stamped in.',
   alternates: { canonical: '/jpg-to-pdf' },
   openGraph: {
+    images: OG_IMAGE,
     type: 'website',
     url: '/jpg-to-pdf',
     title: 'JPG to PDF — combine images into a PDF, free, no upload',

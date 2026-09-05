@@ -3,14 +3,15 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import SocialPreview from '@/components/SocialPreview';
 import { PLACEMENTS, placementGroups } from '@/lib/placements';
-import { SITE } from '@/lib/site';
+import { OG_IMAGE, SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Social Media Image Preview — see every crop before you post, free',
+  title: 'Social Crop Preview — see every crop first',
   description:
-    'Drop one image and see how Instagram, Facebook, X, LinkedIn, YouTube and WhatsApp will crop it — feed, story, banner and profile picture at once, including the circular mask. Nothing is uploaded.',
+    'See how Instagram, Facebook, X, LinkedIn, YouTube and WhatsApp will crop one image — feed, story, banner and the profile circle, all at once. Nothing is uploaded.',
   alternates: { canonical: '/social-preview' },
   openGraph: {
+    images: OG_IMAGE,
     type: 'website',
     url: '/social-preview',
     title: 'Social Media Image Preview — see every crop before you post',

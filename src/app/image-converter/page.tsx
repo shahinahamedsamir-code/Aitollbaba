@@ -3,14 +3,15 @@ import Converter from '@/components/Converter';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { TARGETS } from '@/lib/convert';
-import { SITE } from '@/lib/site';
+import { OG_IMAGE, SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Image Converter — JPG, PNG & WebP in your browser, free',
+  title: 'Image Converter — JPG, PNG, WebP, HEIC',
   description:
-    'Convert images to JPG, PNG or WebP without an upload. HEIC from an iPhone and AVIF are read too. Transparency is kept where the target supports it and composited onto a colour you pick where it cannot.',
+    'Convert to JPG, PNG or WebP with no upload. Reads HEIC from an iPhone and AVIF too. Transparency is kept, or matted onto a colour you pick — never blacked out.',
   alternates: { canonical: '/image-converter' },
   openGraph: {
+    images: OG_IMAGE,
     type: 'website',
     url: '/image-converter',
     title: 'Image Converter — JPG, PNG & WebP in your browser, free',

@@ -3,14 +3,15 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import QrMaker from '@/components/QrMaker';
 import { ECLS } from '@/lib/qr';
-import { SITE } from '@/lib/site';
+import { OG_IMAGE, SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'QR Code Generator — no tracking, no expiry, free',
+  title: 'QR Code Generator — no tracking, no expiry',
   description:
-    'Make a QR code for a link, plain text, Wi-Fi or a contact card. The address goes straight into the code with no shortener in between, so nothing counts your scans and it cannot expire. Export SVG or PNG.',
+    'QR codes for a link, text, Wi-Fi or a contact card. The address goes straight into the code — no shortener, so nothing counts scans and it cannot expire.',
   alternates: { canonical: '/qr-generator' },
   openGraph: {
+    images: OG_IMAGE,
     type: 'website',
     url: '/qr-generator',
     title: 'QR Code Generator — no tracking, no expiry, free',

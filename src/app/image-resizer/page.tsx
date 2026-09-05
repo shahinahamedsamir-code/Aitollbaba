@@ -3,14 +3,15 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Resizer from '@/components/Resizer';
 import { FITS, presetGroups } from '@/lib/resize';
-import { SITE } from '@/lib/site';
+import { OG_IMAGE, SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Image Resizer — exact pixel sizes in your browser, free',
+  title: 'Image Resizer — exact pixel sizes, free',
   description:
-    'Resize images to the exact dimensions a platform asks for, or to your own numbers. Crop, pad or stretch is your choice, aspect ratio can be locked across a mixed batch, and nothing is uploaded.',
+    'Resize to the exact dimensions a platform asks for, or your own numbers. Crop, pad or stretch is your choice, and the aspect ratio locks across a mixed batch.',
   alternates: { canonical: '/image-resizer' },
   openGraph: {
+    images: OG_IMAGE,
     type: 'website',
     url: '/image-resizer',
     title: 'Image Resizer — exact pixel sizes in your browser, free',

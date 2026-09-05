@@ -6,9 +6,9 @@ export const GUIDES: Doc[] = [
     slug: 'what-is-c2pa-content-credentials',
     kind: 'guide',
     title: 'What is C2PA, and how do I remove content credentials?',
-    metaTitle: 'What is C2PA? Remove content credentials from an image',
+    metaTitle: 'What is C2PA? Remove content credentials',
     description:
-      'C2PA content credentials are a signed record of how an image was made, embedded in the file. Here is what is inside one, how to inspect it, and how to remove it in your browser.',
+      'C2PA content credentials are a signed record of how an image was made. What is inside one, how to inspect it, and how to remove it in your browser.',
     eyebrow: 'guide',
     answer:
       'C2PA is a provenance standard: a cryptographically signed manifest embedded in an image that records which tool made or edited it, when, and whether generative AI was involved. Platforms read it to apply AI labels. It is metadata, so it can be inspected and removed — including in the tool on this page.',
@@ -104,9 +104,9 @@ export const GUIDES: Doc[] = [
     slug: 'remove-stable-diffusion-prompt-from-png',
     kind: 'guide',
     title: 'How to remove the Stable Diffusion prompt from a PNG',
-    metaTitle: 'Remove Stable Diffusion prompt & seed from a PNG — free',
+    metaTitle: 'Remove a Stable Diffusion prompt from a PNG',
     description:
-      'Automatic1111, ComfyUI and Forge write your full prompt, negative prompt, seed, sampler and model hash into PNG text chunks. Here is how to see them and strip them out.',
+      'Automatic1111, ComfyUI and Forge write your prompt, seed, sampler and model hash into PNG text chunks. How to see them, and how to strip them out.',
     eyebrow: 'guide',
     answer:
       'Stable Diffusion interfaces store generation parameters in PNG text chunks — tEXt, iTXt and zTXt — under keys like “parameters” or “workflow”. Anyone who downloads your image can read them with a text editor. Re-encoding the image drops every chunk, taking the prompt, seed, sampler, CFG scale and model hash with it.',

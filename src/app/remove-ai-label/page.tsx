@@ -6,14 +6,15 @@ import Header from '@/components/Header';
 import { docHref } from '@/lib/content';
 import { GUIDES } from '@/lib/guides';
 import { PLATFORMS } from '@/lib/platforms';
-import { SITE } from '@/lib/site';
+import { OG_IMAGE, SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'AI Label Remover — strip C2PA, EXIF & AI metadata, free',
+  title: 'AI Label Remover — strip C2PA, EXIF & GPS',
   description:
-    'Remove the metadata platforms read when they add an AI label: C2PA content credentials, IPTC digitalSourceType, generator tags, plus EXIF and GPS. Runs in your browser — no upload, no signup, no limit.',
+    'Remove the metadata platforms read when they add an AI label — C2PA credentials, IPTC digitalSourceType, generator tags, EXIF and GPS. No upload, no signup.',
   alternates: { canonical: '/remove-ai-label' },
   openGraph: {
+    images: OG_IMAGE,
     type: 'website',
     url: '/remove-ai-label',
     title: 'AI Label Remover — strip C2PA, EXIF & AI metadata, free',

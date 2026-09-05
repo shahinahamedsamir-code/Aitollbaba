@@ -2,15 +2,16 @@ import type { Metadata } from 'next';
 import Compressor from '@/components/Compressor';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { SITE } from '@/lib/site';
+import { OG_IMAGE, SITE } from '@/lib/site';
 import { SIZE_PRESETS } from '@/lib/compress';
 
 export const metadata: Metadata = {
-  title: 'Image Compressor — hit a KB budget in your browser, free',
+  title: 'Image Compressor — hit an exact size budget',
   description:
-    'Compress JPG, PNG, WebP, AVIF and HEIC to a size budget you set. The quality is searched for rather than guessed, the before and after sit side by side, and nothing is uploaded.',
+    'Compress JPG, PNG, WebP, AVIF and HEIC to a size budget you set. The quality is searched for, not guessed, and before and after sit side by side. No upload.',
   alternates: { canonical: '/image-compressor' },
   openGraph: {
+    images: OG_IMAGE,
     type: 'website',
     url: '/image-compressor',
     title: 'Image Compressor — hit a KB budget in your browser, free',

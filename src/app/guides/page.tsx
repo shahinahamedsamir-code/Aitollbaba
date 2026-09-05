@@ -4,12 +4,20 @@ import Header from '@/components/Header';
 import { docHref, type Doc } from '@/lib/content';
 import { GUIDES } from '@/lib/guides';
 import { PLATFORMS } from '@/lib/platforms';
+import { OG_IMAGE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Guides — AI labels, C2PA and image metadata explained',
+  title: 'Guides — AI labels and image metadata',
   description:
-    'How platforms decide to put an AI label on an image, what C2PA content credentials contain, and how to remove the metadata behind both. Plain explanations, no upload required.',
+    'How platforms decide to put an AI label on an image, what C2PA content credentials hold, and how to remove the metadata behind both. Plain explanations.',
   alternates: { canonical: '/guides' },
+  openGraph: {
+    images: OG_IMAGE,
+    type: 'website',
+    url: '/guides',
+    title: 'Guides — AI labels and image metadata',
+    description: 'How AI labels actually work, and what to do about them.',
+  },
 };
 
 function Card({ doc }: { doc: Doc }) {
