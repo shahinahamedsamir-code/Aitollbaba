@@ -43,6 +43,18 @@ export const TOOLS: Tool[] = [
     icon: 'M12 3 4 6.4v5.2c0 4.5 3.2 8.2 8 9.4 4.8-1.2 8-4.9 8-9.4V6.4L12 3zM9 12l2 2 4-4',
   },
   {
+    slug: 'ai-image-checker',
+    name: 'AI Image Checker',
+    tagline:
+      'Read what a file declares about its own origin — C2PA, generator tags, prompt data — weighed against the marks a camera leaves.',
+    category: 'privacy',
+    status: 'live',
+    meta: ['reads the file, not the pixels', 'C2PA + generator tags', 'says what it cannot know'],
+    handlesImages: true,
+    short: 'what the file admits about itself',
+    icon: 'M12 3 4 6.4v5.2c0 4.5 3.2 8.2 8 9.4 4.8-1.2 8-4.9 8-9.4V6.4L12 3zM12 8v4M12 15.5v.5',
+  },
+  {
     slug: 'exif-viewer',
     name: 'EXIF Viewer',
     tagline:

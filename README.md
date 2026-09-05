@@ -16,6 +16,7 @@ The homepage is the catalogue. Each tool is its own route.
 | `/social-preview` | Social Crop Preview | live |
 | `/jpg-to-pdf` | JPG to PDF | live |
 | `/qr-generator` | QR Generator | live |
+| `/ai-image-checker` | AI Image Checker | live |
 | `/exif-viewer` | EXIF Viewer | live |
 
 ## Adding a tool
