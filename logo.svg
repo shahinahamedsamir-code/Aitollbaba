@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 56" role="img" aria-label="Aitoollbaba">
+  <rect x="0" y="8" width="40" height="40" rx="11" fill="#c9f24d"/>
+  <g transform="translate(6 14) scale(1.1667)" fill="none" stroke="#0a0f04">
+    <path d="M5 21.2V11.5a7 7 0 0 1 14 0v9.7" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M12 9.4c.54 2.05 1.35 2.86 3.4 3.4-2.05.54-2.86 1.35-3.4 3.4-.54-2.05-1.35-2.86-3.4-3.4 2.05-.54 2.86-1.35 3.4-3.4z" fill="#0a0f04" stroke="none"/>
+  </g>
+  <text x="52" y="36" font-family="'Space Grotesk','Segoe UI',system-ui,sans-serif" font-size="25" font-weight="600" letter-spacing="-0.6">
+    <tspan fill="#c9f24d">ai</tspan><tspan fill="#e8eef6">toollbaba</tspan>
+  </text>
+</svg>
