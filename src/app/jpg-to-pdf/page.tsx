@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import RelatedTools from '@/components/RelatedTools';
 import PdfMaker from '@/components/PdfMaker';
 import { PAGE_SIZES } from '@/lib/pdf';
 import { OG_IMAGE, SITE } from '@/lib/site';
@@ -85,7 +86,14 @@ export default function Page() {
       {
         '@type': 'SoftwareApplication',
         name: 'JPG to PDF',
-        alternateName: ['Aitoollbaba JPG to PDF', 'Image to PDF converter', 'Photos to PDF'],
+        alternateName: [
+          'Aitoollbaba JPG to PDF',
+          'Image to PDF converter',
+          'Photos to PDF',
+          'JPG to PDF online',
+          'Combine images into one PDF',
+          'Photo to PDF converter',
+        ],
         url: `${SITE}/jpg-to-pdf`,
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any browser',
@@ -328,6 +336,8 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        <RelatedTools slug="jpg-to-pdf" />
 
         {/* ============================================================= cta */}
         <section className="halo relative overflow-hidden">

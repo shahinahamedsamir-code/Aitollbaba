@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Compressor from '@/components/Compressor';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import RelatedTools from '@/components/RelatedTools';
 import { OG_IMAGE, SITE } from '@/lib/site';
 import { SIZE_PRESETS } from '@/lib/compress';
 
@@ -85,7 +86,14 @@ export default function Page() {
       {
         '@type': 'SoftwareApplication',
         name: 'Image Compressor',
-        alternateName: ['Aitoollbaba Image Compressor', 'Compress image to KB', 'Reduce image size'],
+        alternateName: [
+          'Aitoollbaba Image Compressor',
+          'Compress image to KB',
+          'Reduce image size',
+          'Compress image to 100KB',
+          'Reduce photo size online',
+          'Compress JPEG online',
+        ],
         url: `${SITE}/image-compressor`,
         applicationCategory: 'MultimediaApplication',
         operatingSystem: 'Any browser',
@@ -302,6 +310,8 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        <RelatedTools slug="image-compressor" />
 
         {/* ============================================================= cta */}
         <section className="halo relative overflow-hidden">

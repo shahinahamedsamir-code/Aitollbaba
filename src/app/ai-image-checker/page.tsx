@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import AiChecker from '@/components/AiChecker';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import RelatedTools from '@/components/RelatedTools';
 import { docHref } from '@/lib/content';
 import { GUIDES } from '@/lib/guides';
 import { PLATFORMS } from '@/lib/platforms';
@@ -54,6 +55,14 @@ const FAQ: [string, string][] = [
   [
     'How is this different from the EXIF viewer?',
     'The EXIF viewer prints every tag in the file and lets you read it yourself. This one asks a single question — what does this file claim about its origin — and weighs the answer, separating a declaration from a hint. Same bytes, different question.',
+  ],
+  [
+    'How do I check if an image is AI generated?',
+    'Drop the file in above and it reads what the image says about itself: a C2PA content credential, the IPTC digitalSourceType field, a CreatorTool or Software tag naming Midjourney, DALL-E, Stable Diffusion or Firefly, and any prompt or seed left in a PNG text chunk. If one of those is present you have an answer from the file itself. If none are, you have learned that the file declares nothing — which is not the same as learning the picture is real, and the result says so rather than pretending otherwise.',
+  ],
+  [
+    'Is this an AI image detector?',
+    'No, and the difference matters. A detector looks at pixels and returns a probability, which means it can be confidently wrong about a real photograph — an ordinary picture of a real person, scored as fake. This reads the metadata instead. It cannot see a generated image that has had its metadata stripped, and it says so plainly when it finds nothing. Narrower, but it never accuses your own photo of something it did not do.',
   ],
 ];
 
@@ -139,7 +148,14 @@ export default function Page() {
       {
         '@type': 'SoftwareApplication',
         name: 'AI Image Checker',
-        alternateName: ['Aitoollbaba AI Image Checker', 'C2PA checker', 'Image provenance checker'],
+        alternateName: [
+          'Aitoollbaba AI Image Checker',
+          'C2PA checker',
+          'Image provenance checker',
+          'AI image checker online',
+          'Check if an image is AI generated',
+          'C2PA content credentials checker',
+        ],
         url: `${SITE}/ai-image-checker`,
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any browser',
@@ -482,6 +498,8 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        <RelatedTools slug="ai-image-checker" />
 
         {/* ============================================================= cta */}
         <section className="halo relative overflow-hidden">

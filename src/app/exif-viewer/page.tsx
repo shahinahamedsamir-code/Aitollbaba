@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ExifViewer from '@/components/ExifViewer';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import RelatedTools from '@/components/RelatedTools';
 import { OG_IMAGE, SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -75,6 +76,10 @@ const FAQ: [string, string][] = [
     'How do I remove what it found?',
     'Use the AI label remover — it does the same scan and then hands back a cleaned copy. This tool is deliberately the read-only half, so you can look at a file without touching it.',
   ],
+  [
+    'Can I view EXIF data without installing anything?',
+    'That is what this is. It is a web page, so there is nothing to install, no account, and no upload either — the file is opened by JavaScript in your own tab and read there. It works on a phone as well as a desktop, and once the page has loaded you can disconnect from the internet and it still reads files.',
+  ],
 ];
 
 export default function Page() {
@@ -84,7 +89,14 @@ export default function Page() {
       {
         '@type': 'SoftwareApplication',
         name: 'EXIF Viewer',
-        alternateName: ['Aitoollbaba EXIF Viewer', 'Image metadata viewer', 'Photo GPS viewer'],
+        alternateName: [
+          'Aitoollbaba EXIF Viewer',
+          'Image metadata viewer',
+          'Photo GPS viewer',
+          'EXIF viewer online',
+          'View EXIF data online',
+          'Photo metadata checker',
+        ],
         url: `${SITE}/exif-viewer`,
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any browser',
@@ -262,6 +274,8 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        <RelatedTools slug="exif-viewer" />
 
         {/* ============================================================= cta */}
         <section className="halo relative overflow-hidden">

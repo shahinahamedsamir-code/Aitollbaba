@@ -3,6 +3,7 @@ import Cleaner from '@/components/Cleaner';
 import FileAnatomy from '@/components/FileAnatomy';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import RelatedTools from '@/components/RelatedTools';
 import { docHref } from '@/lib/content';
 import { GUIDES } from '@/lib/guides';
 import { PLATFORMS } from '@/lib/platforms';
@@ -130,6 +131,10 @@ const FAQ: [string, string][] = [
     'Is it really free?',
     'Yes. It is static files plus browser JavaScript — serving it costs almost nothing, so there is no account, no tier and nothing to buy.',
   ],
+  [
+    'How do I remove the AI label from an image?',
+    'Add the file above and it reports what is inside before touching anything: C2PA content credentials, the IPTC digitalSourceType field, generator tags, EXIF, GPS. Clean it and you get back a copy with those removed and the picture itself untouched. The label comes back only if you re-export from software that writes credentials again. Note that this removes what a platform reads, not what it might infer — a platform analysing pixels is unaffected.',
+  ],
 ];
 
 export default function Page() {
@@ -139,7 +144,15 @@ export default function Page() {
       {
         '@type': 'SoftwareApplication',
         name: 'AI Label Remover',
-        alternateName: ['Aitoollbaba AI Label Remover', 'AI Metadata Remover', 'C2PA Remover', 'EXIF Cleaner'],
+        alternateName: [
+          'Aitoollbaba AI Label Remover',
+          'AI Metadata Remover',
+          'C2PA Remover',
+          'EXIF Cleaner',
+          'Remove AI label from image',
+          'Remove AI label from photo',
+          'Remove C2PA content credentials',
+        ],
         url: `${SITE}/remove-ai-label`,
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any browser',
@@ -577,6 +590,8 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        <RelatedTools slug="remove-ai-label" />
 
         {/* ============================================================= cta */}
         <section className="halo relative overflow-hidden">

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import RelatedTools from '@/components/RelatedTools';
 import Resizer from '@/components/Resizer';
 import { FITS, presetGroups } from '@/lib/resize';
 import { OG_IMAGE, SITE } from '@/lib/site';
@@ -89,6 +90,9 @@ export default function Page() {
           'Aitoollbaba Image Resizer',
           'Resize image to exact pixels',
           'Instagram image size tool',
+          'Resize image online',
+          'Change image dimensions',
+          'Crop image to exact size',
         ],
         url: `${SITE}/image-resizer`,
         applicationCategory: 'MultimediaApplication',
@@ -338,6 +342,8 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        <RelatedTools slug="image-resizer" />
 
         {/* ============================================================= cta */}
         <section className="halo relative overflow-hidden">

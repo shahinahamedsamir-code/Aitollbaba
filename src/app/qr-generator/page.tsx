@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import RelatedTools from '@/components/RelatedTools';
 import QrMaker from '@/components/QrMaker';
 import { ECLS } from '@/lib/qr';
 import { OG_IMAGE, SITE } from '@/lib/site';
@@ -85,7 +86,14 @@ export default function Page() {
       {
         '@type': 'SoftwareApplication',
         name: 'QR Code Generator',
-        alternateName: ['Aitoollbaba QR Generator', 'Wi-Fi QR code maker', 'vCard QR code'],
+        alternateName: [
+          'Aitoollbaba QR Generator',
+          'Wi-Fi QR code maker',
+          'vCard QR code',
+          'Free QR code generator',
+          'QR code maker online',
+          'Make a QR code for a link',
+        ],
         url: `${SITE}/qr-generator`,
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any browser',
@@ -338,6 +346,8 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        <RelatedTools slug="qr-generator" />
 
         {/* ============================================================= cta */}
         <section className="halo relative overflow-hidden">

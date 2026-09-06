@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import RelatedTools from '@/components/RelatedTools';
 import SocialPreview from '@/components/SocialPreview';
 import { PLACEMENTS, placementGroups } from '@/lib/placements';
 import { OG_IMAGE, SITE } from '@/lib/site';
@@ -62,6 +63,8 @@ export default function Page() {
           'Aitoollbaba Social Preview',
           'Instagram crop preview',
           'Profile picture crop checker',
+          'Instagram image size checker',
+          'Profile picture crop preview',
         ],
         url: `${SITE}/social-preview`,
         applicationCategory: 'MultimediaApplication',
@@ -242,6 +245,8 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        <RelatedTools slug="social-preview" />
 
         {/* ============================================================= cta */}
         <section className="halo relative overflow-hidden">

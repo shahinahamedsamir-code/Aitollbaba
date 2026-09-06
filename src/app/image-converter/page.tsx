@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Converter from '@/components/Converter';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import RelatedTools from '@/components/RelatedTools';
 import { TARGETS } from '@/lib/convert';
 import { OG_IMAGE, SITE } from '@/lib/site';
 
@@ -90,6 +91,9 @@ export default function Page() {
           'HEIC to JPG converter',
           'PNG to WebP converter',
           'JPG to PNG converter',
+          'HEIC to JPG online',
+          'Convert image to WebP',
+          'PNG to JPG converter',
         ],
         url: `${SITE}/image-converter`,
         applicationCategory: 'MultimediaApplication',
@@ -315,6 +319,8 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        <RelatedTools slug="image-converter" />
 
         {/* ============================================================= cta */}
         <section className="halo relative overflow-hidden">
