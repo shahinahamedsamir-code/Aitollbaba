@@ -36,6 +36,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
+    // Site pages. Lower priority than the tools, but Search Console and
+    // AdSense both look for them, and they are how a visitor checks who is
+    // behind the site.
+    ...["/about", "/contact", "/privacy"].map((path) => ({
+      url: `${SITE}${path}`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.4,
+    })),
     ...tools,
     ...docs,
   ];

@@ -14,3 +14,10 @@ export const OG_IMAGE = [
     alt: 'Aitoollbaba — free image and privacy tools that run in your browser',
   },
 ];
+
+/**
+ * The public repository. The contact page points here instead of publishing an
+ * email address, so there is nothing on the site for an address harvester to
+ * take.
+ */
+export const REPO = 'https://github.com/shahinahamedsamir-code/Aitollbaba';

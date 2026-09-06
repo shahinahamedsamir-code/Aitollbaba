@@ -47,10 +47,10 @@ export default function Footer() {
               {[
                 ['/#tools', 'All tools'],
                 ['/guides', 'Guides'],
-                ['/#why', 'Why no upload'],
-                ['/#faq', 'FAQ'],
-                ['/remove-ai-label#limits', 'What it cannot do'],
-                ['/#privacy', 'Privacy'],
+                ['/about', 'About'],
+                ['/contact', 'Contact'],
+                ['/privacy', 'Privacy policy'],
+                ['/about#limits', 'What it cannot do'],
               ].map(([href, label]) => (
                 <li key={href}>
                   <a href={href} className="text-fg-2 transition-colors hover:text-acid">
@@ -67,7 +67,11 @@ export default function Footer() {
             <span className="text-fg-2">Privacy.</span> This page has no upload endpoint. Every file you add is
             processed by JavaScript on your own device and discarded when the tab closes. No account, no
             cookies from us, no copy of your file kept anywhere. A page counter records visits to
-            the site, never a file.
+            the site, never a file.{' '}
+            <a href="/privacy" className="text-fg-2 underline underline-offset-2 transition-colors hover:text-acid">
+              Full privacy policy
+            </a>
+            .
           </p>
           <p className="text-[11.5px] leading-relaxed text-fg-3">
             <span className="text-fg-2">Use it honestly.</span> Stripping metadata is a privacy measure. It does
